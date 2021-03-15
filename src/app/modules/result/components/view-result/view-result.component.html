@@ -1,0 +1,45 @@
+<div class="view-result-container">
+  <app-nav-bar [changeNavBar]="'results'"></app-nav-bar>
+  <div *ngIf="!isResultsFetched && !isInfoFetched && listScores.length == 0">
+    <app-loader></app-loader>
+  </div>
+  <div class="view-result component-container">
+    <div class="info-cards mt-3">
+      <div class="number-tests card">
+        <a>
+          Tests</a>
+        <div class="display: flex">
+          <i class="fas fa-stream"></i> &nbsp;<span>{{numberOfResults}}</span>
+        </div>
+      </div>
+      <div class="ave-score card">
+        <a>Average score</a>
+        <div class="display: flex">
+          <i class="fas fa-futbol"></i> &nbsp;<span>{{+((averageScore  * 10).toFixed(2))}}</span>
+        </div>
+      </div>
+      <div class="best-score card">
+        <a>Highest score</a>
+        <div class="display: flex">
+          <i class="fas fa-futbol"></i> &nbsp;<span>{{(maxScore).toFixed(2)}}</span>
+        </div>
+      </div>
+      <div class="worst-score card">
+        <a>Lowest score</a>
+        <div class="display: flex">
+          <i class="fas fa-futbol"></i> &nbsp;<span>{{minScore.toFixed(2)}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="listScores.length > 0">
+      <app-pie-chart-overview [results]="listScores"></app-pie-chart-overview>
+    </div>
+    <div *ngIf="listScores.length == 0 && isInfoFetched && isResultsFetched">
+      <div class="blur-container p-3" style="width: 80%; margin: 0 auto">
+        <div class="blur"></div>
+        <div class="text-in-blur">There is no results</div>
+      </div>
+    </div>
+  </div>
+
+</div>

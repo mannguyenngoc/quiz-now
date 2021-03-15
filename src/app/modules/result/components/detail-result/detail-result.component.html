@@ -1,0 +1,61 @@
+<div class="detail-result-container">
+  <app-nav-bar [changeNavBar]="'results'" [levelName]="'history'"></app-nav-bar>
+  <div *ngIf="test" class="questions component-container mt-5">
+    <div class="detail">
+      <div class="info">
+        <div class="info-title"><i class="far fa-question-circle"></i> Test's name</div>
+        <div class="number text">{{test.title}}
+        </div>
+      </div>
+      <div class="info">
+        <div class="info-title"><i class="far fa-futbol"></i> Scores</div>
+        <div class="number">{{(result.score).toFixed(2)}}</div>
+      </div>
+      <div class="info">
+        <div class="info-title"><i class="far fa-question-circle"></i> Total questions</div>
+        <div class="number">{{test.numberOfHardQuestions + test.numberOfEasyQuestions + test.numberOfNormalQuestions}}
+        </div>
+      </div>
+      <div class="info">
+        <div class="info-title"><i class="far fa-clock"></i> Time (minutes)</div>
+        <div class="number">{{test.time}} </div>
+      </div>
+    </div>
+    <div class="mt-5" style="overflow-y:scroll; height: 60vh">
+      <div *ngFor="let question of test.questions; let i = index" class="question mt-2 py-2 px-3">
+        <div class="question-bar">
+          <div class="question-title"><span class="question-order">Question {{i+1}}</span>: {{question.title}}</div>
+        </div>
+        <div class="answers">
+          <div *ngIf="!question.isManyAnswers">
+            <div *ngFor="let answer of question.answers; let j = index">
+              <div style="display:flex; flex-direction: row;align-items: center">
+                <input *ngIf="result.userAnswers[i].answers.indexOf(answer.title) === -1" type="radio" disabled>
+                <input *ngIf="result.userAnswers[i].answers.indexOf(answer.title) !== -1" type="radio" disabled checked>
+                &nbsp;
+                <span>{{answer.title}}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="question.isManyAnswers">
+            <div *ngFor="let answer of question.answers; let j = index">
+              <div>
+                <div style="display:flex; flex-direction: row;align-items: center">
+                  <input *ngIf="result.userAnswers[i].answers.indexOf(answer.title) === -1" type="checkbox" disabled>
+                  <input *ngIf="result.userAnswers[i].answers.indexOf(answer.title) !== -1" type="checkbox" disabled
+                    checked>
+                  &nbsp;
+                  <span>
+                    <span>{{answer.title}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>

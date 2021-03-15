@@ -1,0 +1,103 @@
+.create-bank-container {
+  display: flex;
+}
+
+* {
+  font-family: PoppinsLight;
+}
+
+button {
+  border: 0;
+  outline: none;
+  color: white;
+}
+
+input {
+  outline: none;
+  border: 0
+}
+
+
+.bankForm__title input {
+  width: 100%;
+  font-size: 24px;
+}
+
+
+.question-form {
+  padding: 16px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 70px -30px #C4C4C4;
+  border-radius: 8px;
+}
+
+.input__question {
+  width: 100%;
+  padding: 8px 8px;
+}
+
+.button__add-question {
+  /* position: fixed;
+  bottom: 6vh; */
+  box-shadow: 0px 10px 70px -30px #c4c4c4;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  background: #5F45EA;
+}
+
+.button__submit {
+  background-color: white;
+  color: black;
+  border: 2px solid lightgray;
+  border-radius: 8px;
+  font-family: PoppinsBlack;
+  box-shadow: 0px 10px 70px -30px #c4c4c4;
+  font-size: 16px;
+  padding: 4px 16px;
+  /* background: #0f993e; */
+  /* border-radius: 8px; */
+  width: 127px;
+  height: 44px;
+}
+.button__submit:hover {
+  background-color: #fafafa;
+}
+label {
+  font-size: 16px;
+}
+
+select {
+  outline: none;
+}
+
+option[value="easy"] {
+  color: #0f993e
+}
+
+option[value="normal"] {
+  color: #E89528;
+}
+
+option[value="hard"] {
+  color: #F22D2D
+}
+
+.question-form .label {
+  font-family: PoppinsBlack;
+}
+select {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  cursor: pointer
+}
+.remove-icon {
+  position: absolute;
+  top: -1vh;
+  right: 0vw;
+  font-size: 1.25rem;
+  cursor: pointer;
+
+}

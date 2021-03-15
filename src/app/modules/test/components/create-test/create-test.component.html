@@ -1,0 +1,107 @@
+<div class="create-test-container">
+  <app-nav-bar [changeNavBar]="'true'" [bankId]="bankId"></app-nav-bar>
+  <div *ngIf="bank" class="create-test component-container mt-5">
+
+    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+      <div class="create-test-form p-3">
+        <div class="create-test-form-title">
+          Create test
+        </div>
+        <div class="input-total-questions">
+          <div>
+            <div class="create-test-form-setting__title mb-2" style="display: inline-block">QUESTIONS:&nbsp;</div><span style="font-style: italic; color: #bababa">(Max
+              is
+              {{bank.numberOfEasyQuestions + bank.numberOfNormalQuestions + bank.numberOfHardQuestions}})</span>
+          </div>
+          <npn-slider [multiRange]="false" [step]="1" [min]="0"
+            [max]="bank.numberOfEasyQuestions + bank.numberOfNormalQuestions + bank.numberOfHardQuestions"
+            (onChange)="onChangeInput($event)"></npn-slider>
+          <!-- <input type="number" min="1"
+            max="{{bank.numberOfEasyQuestions + bank.numberOfNormalQuestions + bank.numberOfHardQuestions}}"
+            placeholder="Choose total number of question" value="{{totalQuestions}}" (keyup)="onChangeInput($event)"> -->
+        </div>
+        <div class="test-info">
+          <div>There are: {{totalQuestions}} questions</div>
+          <ul>
+            <li [class.over]="easyQuestions > bank.numberOfEasyQuestions">{{easyQuestions}} easy questions. (Max is
+              {{bank.numberOfEasyQuestions}} questions)</li>
+            <li [class.over]="normalQuestions > bank.numberOfNormalQuestions">{{normalQuestions}} normal questions. (Max
+              is {{bank.numberOfNormalQuestions}} questions)</li>
+            <li [class.over]="hardQuestions > bank.numberOfHardQuestions">{{hardQuestions}} hard questions. (Max is
+              {{bank.numberOfHardQuestions}} questions)</li>
+          </ul>
+          <npn-slider *ngIf="totalQuestions > 0 " [min]="0" [max]="totalQuestions" (onChange)="onSliderChange($event)"
+            [step]="1" [showStepIndicator]="true">
+          </npn-slider>
+        </div>
+        <div class="create-test-form-setting py-3 mt-3">
+          <div class="create-test-form-setting__title mb-2 ">
+            SETTING
+          </div>
+          <div class="input-question input-setting mb-2 px-2">
+            <div class="input-question-title">Code:&nbsp;</div>
+            <div class="input-setting-text">
+              <input type="text" placeholder="Enter test's code" formControlName="code">
+            </div>
+          </div>
+          <div class="input-question input-setting mb-2 px-2">
+            <div class="input-question-title">Name:&nbsp;</div>
+            <div class="input-setting-text">
+              <input type="text" placeholder="Enter test's name" formControlName="title" required minlength="6">
+
+              <span class="text-danger"
+                *ngIf="(testFormControl.title.touched || submitted) && testFormControl.title.errors?.required">
+                Name is required
+              </span>
+            </div>
+          </div>
+          <div class="input-question input-setting mb-2 px-2">
+            <div class="input-question-title">
+              Time:
+            </div>
+            &nbsp;
+            <div class="input-question-number">
+              <input type="number" min="1" value="1" formControlName="time" placeholder="1">
+              minutes
+            </div>
+          </div>
+
+          <div class="input-question input-setting mb-2 px-2">
+            <input type="checkbox" id="inputKnowTheResult" class="input-checkbox" formControlName="knowTheResult">
+            &nbsp;
+            <span>
+              <label for="inputKnowTheResult" class="input-question-title">Candidate can see the result after
+                submit</label>
+            </span>
+
+          </div>
+          <div formArrayName="requireInfo" class="require-info input-setting mb-2 px-2">
+            <div class="button-add-info" (click)="addInfo()">+ Add info</div>
+            <div *ngFor="let infoFormGroup of infosFormGroup">
+              <div [formGroup]="infoFormGroup" class="info-form px-3">
+                <input type="text" formControlName="info" class="info-field">
+                &nbsp;
+                <label for="type">Type: &nbsp;</label>
+                <select id="level" formControlName="type">
+                  <option value="text">Text</option>
+                  <option value="number">Number</option>
+                  <option value="option">Option</option>
+                </select>
+                <div *ngIf="infoFormGroup.controls.type.value === 'option'">
+                  <input type="text" formControlName="option" class="option-field p-2"
+                    placeholder="Dividing options into comma ',' ">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button *ngIf="testForm.valid" type="submit" class="button__create">Create</button>
+
+    </form>
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.view-result-container {
+  display: flex;
+}
+
+* {
+  font-family: PoppinsLight;
+}
+
+.loading {
+  margin-left: 240px;
+}
+
+.info-cards {
+  margin: 0 auto;
+  margin-bottom: 50px;
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card {
+  width: 240px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.card span {
+  font-size: 24px;
+  /* color: #c4c5c6; */
+  font-weight: 1000;
+}
+
+.card div {
+  font-size: 20px;
+}
+
+a {
+  font-size: 20px;
+  font-weight: 800
+}

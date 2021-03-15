@@ -1,0 +1,83 @@
+<app-modal-require *ngIf="test && !showModal" [test]="test" (infoEmitEvent)="receiveInfo($event)"></app-modal-require>
+
+<div *ngIf="!isFinished && test">
+  <div class="info-container mt-5 px-2 py-3">
+    <div class="questions-container ">
+      <div class="container" [class.blur-test]="!showModal">
+        <div class="row">
+          <div *ngFor="let question of test.questions; let i = index" class="col-3">
+            <div style="cursor: pointer" class="question__number" (click)="scroll('question' + i)"
+              [class.selected]="saveStateAnswer[i]">{{i+1}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line-container">
+      <div class="line"></div>
+    </div>
+    <app-timer *ngIf="showModal" [time]="test.time*60" (finishedEvent)="submitAnswers()"></app-timer>
+    <div style="display: flex; justify-content: center">
+      <button class="button-submit-test" id="target" (click)="onSubmit()">Finish</button>
+    </div>
+  </div>
+
+
+
+  <div class="container mb-5" [class.blur-test]="!showModal">
+    <div *ngIf="test" class="do-test-container">
+      <div class="do-test__header mt-5">
+        <div class="do-test__title">
+          <span>{{test.title}}</span>
+          &nbsp;
+          <span class="do-test__title__number">{{test.questions.length | count:"question"}}</span>
+        </div>
+        <div class="do-test__creator">
+          <span>Create by Nguyen Ngoc Man</span>
+        </div>
+      </div>
+      <form [formGroup]="userForm" (ngSubmit)=onSubmit()>
+        <div class="do-test__questions ">
+          <div formArrayName="answers">
+            <div class="do-test__question__answers ">
+              <div *ngFor="let answerGroup of answersFormGroup; let i = index"
+                class="do-test__question-container mt-2 p-2 rounded">
+                <div class="do-test__question__title" id="question{{i}}">
+                  <span>Question {{i+1}}</span>{{': ' + test.questions[i].title}}
+                </div>
+                <div class="do-test__answers">
+                  <div *ngFor="let answer of test.questions[i].answers">
+                    <div [formGroup]="answerGroup">
+                      <div *ngIf="!test.questions[i].isManyAnswers" class="do-test__answer__title">
+                        <span>
+                          <input type="radio" name="{{test.questions[i].title}}" id="{{answer.title}}-{{i}}"
+                            (click)="onChoseAnswer(answer.title, i, 'radio')">
+                        </span> &nbsp;
+                        <label for="{{answer.title}}-{{i}}">{{answer.title}}</label>
+                      </div>
+                      <div *ngIf="test.questions[i].isManyAnswers" class="do-test__answer__title">
+                        <span>
+                          <input type="checkbox" name="{{test.questions[i].title}} " id="{{answer.title}}-{{i}}"
+                            (click)="onChoseAnswer(answer.title, i, 'checkbox')">
+                        </span>
+                        &nbsp;
+                        <label for="{{answer.title}}-{{i}}">{{answer.title}}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  <app-modal-confirm [testId]="test._id" [showModalConfirm]="showModalConfirm" [value]="userForm.value"
+    (emitEventCloseModal)="finishTest($event)"></app-modal-confirm>
+</div>
+<div *ngIf="isFinished">
+  <app-finish-test [test]="test" [score]="score"></app-finish-test>
+</div>

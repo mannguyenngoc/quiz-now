@@ -1,0 +1,40 @@
+<div>
+  <div class="container">
+
+    <div class="bar">
+      <div>
+        <img src="../../../../../assets/imgs/logo.svg" class="bar__logo">
+        <span>Quiznow</span>
+      </div>
+      <div>
+        <button class="bar__button" (click)="changeForm()">{{!showRegisterForm ? "Sign up" : "Login"}}</button>
+      </div>
+    </div>
+    <div class="form">
+      <div *ngIf="!showRegisterForm" class="main-div-login animate__animated animate__fadeInLeft">
+        <div>
+          <div class="slogan">
+            Get started
+          </div>
+
+          <app-login></app-login>
+        </div>
+        <div class="image">
+
+          <img class="image__landing-page" src="../../../../../assets/imgs/img-landing-page.png">
+        </div>
+      </div>
+
+      <div *ngIf="showRegisterForm" class="main-div-register animate__animated animate__fadeInRight">
+        <div class="image">
+
+          <img class="image__landing-page" src="../../../../../assets/imgs/img-landing-page.png">
+        </div>
+        <app-register></app-register>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

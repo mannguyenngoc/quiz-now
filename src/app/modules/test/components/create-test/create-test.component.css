@@ -1,0 +1,172 @@
+.create-test-container {
+  display: flex;
+}
+* {
+  font-family: PoppinsLight;
+}
+input {
+  border: 0;
+  outline: none
+}
+
+.create-test-form {
+  width: 80%;
+  /* margin-left: 120px; */
+  margin: 0 auto;
+  /* padding-bottom: 32px; */
+  background: #FFFFFF;
+  box-shadow: 0px 0px 70px -30px #C4C4C4;
+  border-radius: 16px;
+}
+.test-info {
+  width: 80%;
+  margin: 0 auto;
+
+}
+.input-total-questions {
+  width: 80%;
+  font-weight: 600;
+  margin: 0 auto;
+}
+.create-test-form-title {
+  font-family: PoppinsBlack;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: center;
+  /* identical to box height */
+
+  color: #5F45EA;
+}
+
+.input-question {
+  font-family: PoppinsBlack;
+  font-weight: 600;
+  margin: 0 auto;
+  font-size: 16px;
+  width: 728px;
+  display: flex;
+  justify-content: space-between;
+
+  /* padding: 4px 16px; */
+
+  background: #FFFFFF;
+  box-shadow: 0px 10px 70px -30px #B4B4B4;
+  border-radius: 32px;
+}
+.bank-info {
+  font-size: 12px;
+}
+.input-question-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-question-number,
+.input-setting-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-question-number input {
+  width: 48px;
+  background-color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.create-test-form-setting {
+  margin: 0 auto;
+
+  width: 80%;
+
+  /* background: #FFFFFF; */
+  /* box-shadow: 0px 0px 70px -30px #C4C4C4; */
+  border-radius: 32px;
+}
+
+.create-test-form-setting__title {
+  font-family: PoppinsBlack;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  /* identical to box height */
+}
+
+.input-setting {
+  justify-content: flex-start;
+  box-shadow: 0px;
+  width: 100%;
+}
+
+.input-setting-text input {
+  background-color: white;
+}
+
+.input-checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.max-number {
+  font-family: PoppinsLight;
+  font-size: 12px;
+}
+
+.button__create {
+  outline: none;
+  border: 0;
+  position: absolute;
+  right: 30px;
+  background-color: #759AF1;
+  padding: .5rem;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+}
+
+.require-info {
+  background: #FFFFFF;
+
+  border-radius: 20px;
+
+  /* padding: 10px 20px; */
+  margin: 0 auto;
+}
+
+.info-field {
+  background: #FFFFFF;
+  border-bottom: 1px solid lightgray;
+  font-size: 16px;
+}
+
+.button-add-info {
+  width: 20%;
+  padding: 5px;
+  color: #059AF0;
+  cursor: pointer;
+}
+
+.option-field {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid lightgrey;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.over {
+  color: red;
+}
+.left-side-style {
+  display: inline-block;
+  height: 100%!important;
+  position: absolute;
+  top: 0;
+  background: red!important;
+}
+::ng-deep .slider {
+  padding: 0!important;
+}

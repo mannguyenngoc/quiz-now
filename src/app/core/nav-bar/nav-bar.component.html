@@ -1,0 +1,67 @@
+<div *ngIf="showBar" style="height: 100%">
+  <div class="nav-bar pt-5">
+    <div>
+      <div class="route-container " [class.selected]="currentLink.indexOf('bank') != -1" (click)="goYour()">
+        <div class="img-icon p-2">
+          <i class="fas fa-book"></i>
+          <div class="detail-icon p-1">Banks</div>
+        </div>
+      </div>
+      <div class="line-footer mt-1 mb-1" *ngIf="changeNavBar != '' && changeNavBar != 'results' "></div>
+      <div *ngIf="changeNavBar === 'true'" class="feature-drop">
+        <div [class.levelSelected]="levelName === 'dashboard'" class="spi-feature">
+          <div class="img-icon img-icon-2 p-2" (click)="goToDashboard()">
+            <i class="fas fa-chart-line"></i>
+            <div class="detail-icon p-1">Dashboard</div>
+          </div>
+        </div>
+        <div [class.levelSelected]="levelName === 'tests'" class="spi-feature">
+          <div class="img-icon img-icon-2 p-2" (click)="goToViewTests()">
+            <i class="far fa-sticky-note"></i>
+            <div class="detail-icon p-1">Tests</div>
+          </div>
+        </div>
+        <div [class.levelSelected]="levelName === 'questions'" class="spi-feature">
+          <div class="img-icon img-icon-2 p-2" (click)="goToViewQuestions()">
+            <i class="far fa-question-circle"></i>
+            <div class="detail-icon p-1">Questions</div>
+          </div>
+        </div>
+      <div [class.levelSelected]="levelName === 'config'" class="spi-feature mb-5">
+          <div class="img-icon img-icon-2 p-2" (click)="goToConfig()">
+            <i class="fas fa-cogs"></i>
+            <div class="detail-icon p-1">Setting</div>
+          </div>
+          <div *ngIf="showModalConfig">
+            <app-config-bank [bankId]="bankId" (emitEventCloseModal)="closeModalConfig()"></app-config-bank>
+          </div>
+        </div>
+      </div>
+      <div class="route-container" [class.selected]="currentLink.indexOf('result') != -1" (click)="goResult()">
+        <div class="img-icon p-2">
+          <i class="fas fa-trophy"></i>
+          <div class="detail-icon p-1">Results</div>
+        </div>
+      </div>
+      <div class="line-footer mt-1 mb-1" *ngIf="changeNavBar != '' && changeNavBar === 'results'"></div>
+      <div *ngIf="changeNavBar==='results'" class="feature-drop">
+        <div [class.levelSelected]="levelName === ''" class="spi-feature">
+          <div class="img-icon img-icon-2 p-2" (click)="goResult()">
+            <i class="fas fa-chart-line"></i>
+            <div class="detail-icon p-1">Dashboard</div>
+          </div>
+        </div>
+        <div [class.levelSelected]="levelName === 'history'" class="spi-feature">
+          <div class="img-icon img-icon-2 p-2" routerLink="/result/history">
+            <i class="fas fa-history"></i>
+            <div class="detail-icon p-1">History</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <app-modal-delete [bankId]="bankId" [showModalDelete]="showModalDelete" (emitCloseModal)="closeModal()"
+      (emitGoBack)="goBack($event)"></app-modal-delete>
+  </div>
+
+</div>

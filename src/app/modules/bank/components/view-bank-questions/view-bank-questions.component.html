@@ -1,0 +1,69 @@
+<div class="view-bank-questions-container">
+  <app-nav-bar [changeNavBar]="'true'" [currentLink]="'view'" [bankId]="bankId" [levelName]="'questions'"></app-nav-bar>
+  <div class="component-container mt-5">
+    <div style="display: flex; margin: 0 auto;width: 80%; margin-bottom: 2rem">
+      <app-search-question (eventSearchQuestions)="receiveSearchResults($event)"></app-search-question>
+      &nbsp;
+      <div style="display: flex; justify-content:center; align-items:center">
+        <button class="button-add-question" (click)="openModal()">Add question</button>
+      </div>
+
+    </div>
+    <div *ngIf="questions.length === 0 && !isFetched">
+      <app-loader></app-loader>
+    </div>
+    <div *ngIf="questions.length === 0 && isFetched" style="width: 70%; margin: 0 auto">
+      Empty
+    </div>
+    <div class="view-bank-questions">
+      <div class="m">
+        <div *ngFor="let question of questions">
+          <div class="view-bank-question rounded px-3 py-3 w-100 mt-2" (click)="goToQuestion(question)"
+            style="cursor: pointer">
+            <div class="question__title">
+              {{question.title}}
+            </div>
+            <div class="question__level">
+              {{question.level}}
+            </div>
+          </div>
+        </div>
+        <app-pagination *ngIf="pages != 0 && !hidePagination" [goRoute]="link"
+          (changePageEvent)="getBankQuestions($event)" [pageNumber]="pages" [currentPage]="currentPage.toString()"
+          class="pagination mt-3"></app-pagination>
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showModalModify" class="modal-confirm">
+    <div style="margin-top: 100px">
+      <app-view-question-detail [questionId]="questionId" (eventCloseModal)="closeModalModify()">
+      </app-view-question-detail>
+    </div>
+  </div>
+  <div *ngIf="showModalAdd" class="modal-confirm">
+    <div style="margin-top: 100px">
+      <!-- <div style="display: flex; justify-content: space-between">
+        <span style="cursor: pointer; font-size: 24px" (click)="closeModal()">X</span>
+      </div> -->
+      <app-view-question-detail [bankId]="bankId" style="width:100%" (eventCloseModal)="closeModal()">
+      </app-view-question-detail>
+    </div>
+    <!-- <div>
+        <div [formGroup]="questionForm" class="form">
+          <label>Question:&nbsp;</label>
+          <input class="input-title" formControlName="title" placeholder="Input question content">
+          <div class="level">
+            <label for="level">Level: &nbsp;</label>
+            <select id="level" formControlName="level">
+              <option value="easy">Easy</option>
+              <option value="normal">Normal</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <app-create-question (newAnswersEvent)="addAnswers($event)"></app-create-question>
+        </div>
+      </div> -->
+
+  </div>
+</div>

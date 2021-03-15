@@ -1,0 +1,160 @@
+.blur-test {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.do-test__title {
+
+  font-family: PoppinsBlack;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 60px;
+  color: #2D2D2D;
+}
+
+.do-test__title__number {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.container {
+  padding-top: 50px;
+
+}
+
+.do-test__header {
+  width: 70%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.do-test__creator {
+  display: flex;
+  align-items: center;
+
+  font-family: PoppinsLight;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 36px;
+  color: #929292;
+}
+
+.do-test__question-container {
+  width: 70%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 70px -30px #C4C4C4;
+}
+
+.do-test__question__title {
+  font-family: PoppinsBlack;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 42px;
+
+  color: #2D2D2D;
+}
+
+.do-test__question__title span {
+  font-weight: 600;
+}
+
+
+.do-test__answer__title {
+  font-family: PoppinsLight;
+  /* font-style: normal; */
+  /* font-weight: normal; */
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  color: #2D2D2D;
+}
+
+input[type=radio] {
+  border: 0px;
+  height: 16px;
+  width: 16px;
+  outline: #5F45EA
+  /* line-height: 36px; */
+}
+
+input[type=checkbox] {
+  height: 16px;
+  width: 16px;
+}
+
+.questions-container {
+  text-align: center;
+  height: 50vh;
+  
+  overflow-y: scroll;
+}
+
+.line {
+  width: 80%;
+  background: lightgray;
+  height: .1vw;
+  margin: 0 auto
+}
+
+.questions-container .container {
+  padding-top: 0;
+  margin-top: 20px;
+}
+
+.question__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.questions-container {
+
+  color: #000
+}
+
+.selected {
+  background-color: #5F45EA80;
+  color: white;
+  border: 0;
+}
+
+.button-submit-test {
+  border: 0;
+  width: 80px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: #5F45EA;
+  float: right;
+  color: white;
+  outline: none;
+}
+
+.info-container {
+  background-color: white;
+  position: fixed;
+  height: 70%;
+  width: 20%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 0.1875rem 0 rgb(0 0 0 / 50%);
+  border-radius: 8px;
+
+}
